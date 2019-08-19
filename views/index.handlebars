@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col l4">
+        <div class="card">
+            <div class="card-image">
+                <img src="assets/images/devourburger.jpg">
+                <span class="card-title">Eat the Burger</span>
+            </div>
+            <div class="card-content">
+                {{#each burgers}}
+                {{#unless this.eaten}}
+                <li>
+                    {{this.id}}
+                    {{this.name}}
+                    <form action="/{{this.id}}?_method=PUT" method="POST">
+                        <input type="hidden" name="eaten" value="true">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                            <i class="material-icons right">fastfood</i>
+                        </button>
+                        </form>               
+                </li>
+                {{/unless}}
+                {{/each}}
+            </div>
+
+        </div>
+    </div>
+    <div class="col l4">
+        <div class="card">
+            <div class="card-image">
+                <img src="assets/images/theburger.jpg">
+                <span class="card-title">Add the Burger</span>
+            </div>
+            <div class="card-content">
+                	<form class="create-update-form" action="/" method="POST">
+                <input placeholder="BURGER" id="addBurger" name="name"type="text">
+                <label for="addBurger">Add burger to eat later</label>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">fastfood</i>
+                </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="col l4">
+        <div class="card">
+            <div class="card-image">
+                <img src="assets/images/eatburger.jpg">
+                <span class="card-title">Burger Graveyard</span>
+            </div>
+            <div class="card-content">
+                {{#each burgers}}
+                {{#if this.eaten}}
+                <li>
+                    {{this.id}}
+                    {{this.name}}
+                </li>
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
